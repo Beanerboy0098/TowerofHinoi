@@ -1,17 +1,15 @@
 #include "Node.hpp"
-#include <iostream>
-#include <string>
-using namespace std;
-    
-Node::Node(string payload)
+
+
+    Node::Node(int payload)
 {
     this->payload = payload;
     this->nextNode = 0;
 }
-//changed to a String to reflect our circle representation
-string Node::getPayload()
+
+int Node::getPayload()
 {
-   return this->payload; 
+    return this->payload;
 }
 
 void Node::setNextNode(Node* n)

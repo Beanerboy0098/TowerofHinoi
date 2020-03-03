@@ -1,33 +1,70 @@
-#include "Towers.hpp"
+#include "Stack.hpp"
 #include <iostream>
-#include <string>
+
 using namespace std;
 
 int main()
 {
-    Stack* towerOne = new Stack();
-    Stack* towerTwo = new Stack();
-    Stack* towerThree = new Stack();   
+    Stack* firstTower = new Stack();
+    Stack* secondTower = new Stack();
+    Stack* thirdTower = new Stack();
+    firstTower->push(3);
+    firstTower->push(2);
+    firstTower->push(1);
 
-    towerOne->push("===");
-    towerOne->push("==");
-    towerOne->push("=");
-    //Representing each circle size as equal signs
+    int from;
+    int to;
+    while(thirdTower->isWin() == false)
+    {
+        std::cout <<"\nFirst Tower: \n";
+        firstTower->displayTextual();
+        std::cout <<"Second Tower: \n";
+        secondTower->displayTextual();
+        std::cout <<"Third Tower: \n";
+        thirdTower->displayTextual();
 
-    Towers* collection = new Towers(towerOne, towerTwo, towerThree);
-    collection->displayTowers();
+        std::cout<<"\nRemove from? ";
+        std::cin>>from;
+        std::cout<<"\nAdd to? ";
+        std::cin>>to;
+
+        if(from == 1)
+        {
+            if(to == 2)
+            {
+                firstTower->moveTo(secondTower);
+            }
+            else if (to == 3)
+            {
+                firstTower->moveTo(thirdTower);
+            }
+        }
+        else if(from == 2)
+        {
+            if(to == 1)
+            {
+                secondTower->moveTo(firstTower);
+            }
+            else if(to == 3)
+            {
+                secondTower->moveTo(thirdTower);
+            }
+        }
+        else
+        {
+            if(to == 1)
+            {
+                thirdTower->moveTo(firstTower);
+            }
+            else if(to == 2)
+            {
+                thirdTower->moveTo(secondTower);
+            }
+        }
+        
+
+    }
     
-    collection->move(towerOne, towerTwo);
-    collection->displayTowers();
-    
-    collection->move(towerOne, towerTwo);
-    collection->displayTowers();
 
-    collection->move(towerTwo, towerThree);
-    collection->displayTowers();
-
-    collection->move(towerTwo, towerThree);
-    collection->displayTowers();
-    //These methods represent moves since we don't have to worry about rules the process is straightfoward.
     return 0;
 }

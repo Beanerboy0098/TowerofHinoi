@@ -1,15 +1,12 @@
-#include <string>
-using namespace std;
-
 class Node
 {
-    private:
-        string payload;
+    private: 
+        int payload;
         Node* nextNode;
 
-    public:
-        Node(string payload);
-        string getPayload();
+    public: 
+        Node(int payload);
+        int getPayload();
         void setNextNode(Node* n);
         Node* getNextNode();
 };
